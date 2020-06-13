@@ -1,0 +1,21 @@
+service: distance-api
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-west-1
+
+functions:
+  hello:
+    handler: handler.main
+    events:
+      - http:
+          path: numpy
+          method: post
